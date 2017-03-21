@@ -25,8 +25,8 @@ object Demo extends App {
     // todo: 需要实际接收一条从 爬虫平台上传回来的消息（是个爬取结果）， 然后在决定如何解析。 我认为接受到的消息的是个
     // todo: (String, String) 类型的数据，其中第二个 String 是爬到的 json串（字符串），但究竟是不是还需要验证
     def parse(raw: RDD[(String, String)]): Unit = {
-        // 把 Case Class 组成的 RDD 转成 DataFrame 是需要
-        sqlContext.createDataFrame(raw.map(a => Record(a._2))).write.format("text").
+        // 除了过比较长一段时间再写之外还需要控制分区，这样才能避免产生过多小文件
+        sqlContext.createDataFrame(raw.coalesce(1).map(a => Record(a._2))).write.format("text").
             mode(org.apache.spark.sql.SaveMode.Append).save("test.parquet")
     }
     
@@ -35,15 +35,16 @@ object Demo extends App {
     val topics = List(("crawler", 1)).toMap
     // 接受的消息来自于 localhost:2181 的kafka 服务器
     // 当前 consumer 是属于 crawler group 的 consumer
-    // todo: 应该加个 windows 函数， 每隔比较长的一段时间才把结果写成 parquet 文件， 避免生成小文件
     // todo: 当 kafka 中已经没有了消息时， 这是貌似我这个程序会产生 .crc 空文件， 如果这样的文件最终被导入到Hive/Impala 表中的话，也会减低 Hive/Impala 的性能，需要避免
     // todo：在链接 kafka 时，有时候会报 kafka java.io.IOException: 远程主机强迫关闭了一个现有的连接，我认为是 kafka 性能不够的原因
     val topicLines = KafkaUtils.createStream(ssc, zkQuorum = "gs-server-1867:2181", "datascience", topics)
     
-    topicLines.print()
-
+    // 为了避免产生小文件，我每隔较长的一段时间写一次文件
+    val toWrite = topicLines.window(Seconds(5 * 60), Seconds(5 * 60))
     
-    topicLines.foreachRDD(parse _)
+    toWrite.print()
+    
+    toWrite.foreachRDD(parse _)
     
     ssc.start()
     ssc.awaitTermination()
