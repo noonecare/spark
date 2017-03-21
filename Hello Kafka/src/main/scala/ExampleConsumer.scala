@@ -35,7 +35,6 @@ object Demo extends App {
     val topics = List(("crawler", 1)).toMap
     // 接受的消息来自于 localhost:2181 的kafka 服务器
     // 当前 consumer 是属于 crawler group 的 consumer
-    // todo: 当 kafka 中已经没有了消息时， 这是貌似我这个程序会产生 .crc 空文件， 如果这样的文件最终被导入到Hive/Impala 表中的话，也会减低 Hive/Impala 的性能，需要避免
     // todo：在链接 kafka 时，有时候会报 kafka java.io.IOException: 远程主机强迫关闭了一个现有的连接，我认为是 kafka 性能不够的原因
     val topicLines = KafkaUtils.createStream(ssc, zkQuorum = "gs-server-1867:2181", "datascience", topics)
     
