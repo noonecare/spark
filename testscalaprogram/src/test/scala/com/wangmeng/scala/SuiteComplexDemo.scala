@@ -15,12 +15,19 @@ object SuiteComplexDemo extends  App{
             val a = 1
             assert(a == 2)
         }
-}
+    }
+    
+    class DemoAdd extends TestCase {
+        def testDemoAdd() = {
+            val a = 1
+            assert(a==3)
+        }
+    }
     
     val demo = new TestSuite(classOf[Demo], classOf[TestComplex])
+    demo addTest { new DemoAdd }
     val result = new TestResult
     demo run result
-    
     
     println(result.errors())
     println(result.wasSuccessful())
