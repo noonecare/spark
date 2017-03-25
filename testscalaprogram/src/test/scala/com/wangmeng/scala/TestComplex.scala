@@ -6,7 +6,7 @@ import junit.framework.TestCase
   * Created by T440P on 2017/3/24.
   */
 
-class testComplex extends TestCase{
+class TestComplex extends TestCase{
     val testObject = new Complex(1, 2)
     
     def test_+() = {

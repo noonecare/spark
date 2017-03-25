@@ -7,7 +7,7 @@ import org.scalatest.FunSuite
   * Created by wangmeng on 2017/3/25.
   * 使用 FunSuite 做单元测试
   */
-class testFunSuiteComplex extends FunSuite{
+class TestFunSuiteComplex extends FunSuite{
     val testObject = new Complex(1, 2)
     val other = new Complex(3, 4)
     val result = new Complex(4, 6)
