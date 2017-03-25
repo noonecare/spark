@@ -1,11 +1,12 @@
 package com.wangmeng.scala
 
 import junit.framework.TestCase
+import org.junit.Ignore
 
 /**
   * Created by T440P on 2017/3/24.
   */
-
+@Ignore
 class TestComplex extends TestCase{
     val testObject = new Complex(1, 2)
     
