@@ -1,5 +1,7 @@
 package com.wangmeng.scala
 
+import org.junit.runner.RunWith
+import org.specs2.runner.JUnitRunner
 import org.specs2.mutable.Specification
 
 /**
@@ -9,6 +11,7 @@ import org.specs2.mutable.Specification
   * Specification 特别像）
   */
 
+@RunWith(classOf[JUnitRunner])
 class TestSpecificationComplex extends Specification{
 
     //"1 + 2 * i add 3 + 4 * i shuld be equal " " 4 + 6 * i" 会打印在测试的结果中， 这样的测试结果，看起来很像软件的
