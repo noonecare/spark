@@ -12,7 +12,7 @@ import org.specs2.mutable.Specification
   */
 
 @RunWith(classOf[JUnitRunner])
-class SpecificationComplex extends Specification{
+class ComplexSpec extends Specification{
 
     //"1 + 2 * i add 3 + 4 * i shuld be equal " " 4 + 6 * i" 会打印在测试的结果中， 这样的测试结果，看起来很像软件的
     // Specification。
