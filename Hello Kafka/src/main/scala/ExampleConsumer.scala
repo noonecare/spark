@@ -12,7 +12,7 @@ import org.apache.spark.streaming.kafka.KafkaUtils
 object Demo extends App {
     // DataFrame 要在本地写出数据（比如写出到一个文件），本地必须有设置正确的 HADOOP_HOME 环境变量，或者像下一句代码
     // 一样指定 HADOOP_HOME, 否则会报 spark java.lang.NullPointerException at java.lang.ProcessBuilder.start 的错误
-    System.setProperty("hadoop.home.dir", "D:\\hadoop-common-2.2.0-bin-master")
+    // System.setProperty("hadoop.home.dir", "D:\\hadoop-common-2.2.0-bin-master")
     val conf = new SparkConf()
     conf.setAppName("KafkaExample").setMaster("local[*]")
     
