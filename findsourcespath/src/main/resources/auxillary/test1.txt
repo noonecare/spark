@@ -1,0 +1,1 @@
+看看能不能打印出在 resources/auxillary 目录下的文件，应该可以
