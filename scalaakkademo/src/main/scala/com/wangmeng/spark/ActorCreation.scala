@@ -1,6 +1,13 @@
 package com.wangmeng.spark
 
+import java.util.concurrent.TimeUnit
+
 import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
+
+import scala.concurrent.duration.Duration
+
+import scala.concurrent._
+import ExecutionContext.Implicits.global
 
 
 class MyActor extends Actor with ActorLogging{
@@ -15,5 +22,9 @@ object Demo extends App {
     val actorProperties = Props[MyActor]
     
     val actor = system.actorOf(actorProperties)
-    actor ! 42
+    
+    
+    system.scheduler.scheduleOnce(Duration.create(2000, TimeUnit.MILLISECONDS), new Runnable {
+        override def run(): Unit = actor ! 42
+    })
 }
