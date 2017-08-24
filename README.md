@@ -2,7 +2,7 @@
 
 
 ### Scala
-    function
+    [function](function.md)
     class
     control abstraction
     type parametric
