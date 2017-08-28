@@ -23,7 +23,7 @@ IDEA 的 maven plugin 会把 pom.xml 中的(scope 为 compile, test 的)依赖�
 
 java 中可以使用 javadoc 生成 API 文档， scala 中可以执行 maven-scala-plugin 中的 doc goal 生成 API 文档。scala 中注释文档的写法和 java 中的注释文档的写法完全一致。
 
-jvm 方面可能需要设置 heap size。比如发生如下错误的时候
+[jvm](jvm.md) 方面可能需要设置 heap size。比如发生如下错误的时候
 ```shell
 java.lang.IllegalArgumentException: System memory 259522560 must be at least 4.718592E8. Please use a larger heap size.
 ```
