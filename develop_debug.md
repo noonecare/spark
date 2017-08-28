@@ -17,6 +17,8 @@ scala 做测试时，使用 [scalatest-maven-plugin](http://www.scalatest.org/us
 scala 的编译，使用 maven-scala-plugin。编译 main 目录下的代码需要执行 compile goal, 编译 test 目录下的代码需要执行 testCompile goal。我之前遇见过 执行 mvn test 时， 报 no tests to run 的错误。
 发现是因为我没有执行 testCompile goal, 导致没有编译出用于测试的类，所以 no tests to run。
 
+maven-scalatest-plugin 可能因为源码中有中文而出错，[需要指定编码为 utf-8](https://stackoverflow.com/questions/23604442/scalatest-report-encoding)。
+
 IDEA 的 maven plugin 会把 pom.xml 中的(scope 为 compile, test 的)依赖自动引入到当前 project 下，这样当我们写代码时，
 依赖中的名称（比如包名，类名，函数名等）能自动补全。但是，我们可以手动修改 project structure -> libraries 来修改当前 project 中引入的依赖。
 特别的，当我们把 spark-core 这些 artifact 设成 providied 时，IDEA 的 maven-plugin 不会引入 spark-core ，这时，我们可以手动修改 proejct structure, 把 spark-core 引入 project 的依赖，方便我们携代码，编译做测试等等。
