@@ -23,7 +23,7 @@
 ### Tuning
 
 - shuffle
-- parallelism
+- [parallelism](partition.md)
 - Job Scheduler and YARN
 
 
