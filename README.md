@@ -2,6 +2,7 @@
 
 
 ### Scala
+
 - [function](function.md)
 - [class](class-and-object.md)
 - control abstraction
@@ -11,6 +12,7 @@
 - [case pattern](case_pattern.md)
 - [implicit conversion and parameters](implicit_conversion_and_parameters.md)
 - annotation
+- [scala versus java](scala_versus_java.md)
 
 ### Spark API
 - RDD
