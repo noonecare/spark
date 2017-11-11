@@ -1,6 +1,6 @@
 JVM 支持远程调试。
 
-原理上参见[文章](https://docs.oracle.com/javase/7/docs/technotes/guides/jpda/conninv.html)。
+远程调试的原理参见[文章](https://docs.oracle.com/javase/7/docs/technotes/guides/jpda/conninv.html)。
 这里主要说说这个 demo 怎么用：
 - 运行 docker-compose up，启动 debug-container。
 - 打开 MeetAndBye.java 文件，在 System.out.println("Good Bye"); 这一句前面点断点。
