@@ -1,0 +1,13 @@
+version: '2'
+services:
+  remote-debug-demo:
+    build: .
+    container_name: "debug-container"
+    ports:
+      - "127.0.0.1:5005:5005"
+    command:
+      - "java"
+      - "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"
+      - "-cp"
+      - "remote-debug-1.0-SNAPSHOT.jar"
+      - "MeetAndBye"
